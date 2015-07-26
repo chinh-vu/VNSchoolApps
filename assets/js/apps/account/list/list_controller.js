@@ -24,12 +24,7 @@ define([
 
                 panel.on("account:new", function () {
                     console.log("received event from account:new");
-                    require(["apps/account/new/account_new_view", "entities/account/profile"], function (AccountNewView, Profile) {
-                        console.log('loading account_new_view');
-                        var profile  = new Profile();
-                        var accountNewView = new AccountNewView({model:profile});
-                        App.regions.main.show(accountNewView);
-                    });
+                    App.trigger("account:new");
                 });
                 App.regions.main.show(layout);
             }
