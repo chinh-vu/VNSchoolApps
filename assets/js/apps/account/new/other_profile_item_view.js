@@ -4,9 +4,9 @@ define(["marionette", "tpl!apps/account/new/templates/profile_item.tpl"],
             tagName: "tr",
             template: profileTpl,
             triggers: {
-                "click td a.js-show": "account:show",
-                "click td a.js-edit": "account:edit",
-                "click button.js-delete": "account:delete"
+                "click td a.js-show":     "profile:show",
+                "click td a.js-edit":     "profile:edit",
+                "click button.js-delete": "profile:delete"
             },
 
             events: {

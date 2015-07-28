@@ -21,7 +21,15 @@ define([
                 });
 
                 views.on("new:profile", function() {
-                    App.dialog.show(new OtherProfileView());
+                    var otherProfileView = new OtherProfileView();
+
+                    otherProfileView.on("form:new:profile", function(e) {
+                        console.log("get form:new:profile event -- saving new profile");
+
+                        this.trigger("show", e);
+                    });
+
+                    App.regions.dialog.show(otherProfileView);
                 });
 
                 App.regions.main.show(layout);

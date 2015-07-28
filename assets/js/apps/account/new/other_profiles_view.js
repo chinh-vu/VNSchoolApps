@@ -1,4 +1,4 @@
-define(["marionette", "tpl!apps/account/new/templates/list_profile_item.tpl", "apps/account/new/profile_empty_view", "other_profile_item_view"],
+define(["marionette", "tpl!apps/account/new/templates/list_profile_item.tpl", "apps/account/new/profile_empty_view", "apps/account/new/other_profile_item_view"],
     function (Marionette, profileListTpl, EmptyProfileView, ProfileItemView) {
         return Marionette.CompositeView.extend({
             tagName: "table",
