@@ -1,12 +1,14 @@
-define(["backbone", "app"], function (Backbone, App) {
+define(['backbone', 'app'], function (Backbone, App) {
     return Backbone.Model.extend({
-        urlRoot: "profile",
+        urlRoot: 'profile',
 
         defaults: {
-            firstName: "",
-            lastName: "",
-            phoneNumber: "",
-            email: ""
+            firstName: '',
+            lastName: '',
+            middleName:'',
+            phoneNumber: '',
+            profileType:'',
+            email: ''
         },
 
         validate: function (attrs, options) {

@@ -2,18 +2,18 @@
         <div class="form-group">
             <div class="col-md-3">
                 <div class="controls">
-                    <input type="text" id="firstName" name="firstName" placeholder="First Name" class="form-control">
+                    <input type="text" id="firstName" name="firstName" placeholder="First Name" value="<%- firstName!==undefined ? firstName:''%>" class="form-control">
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="controls">
-                    <input type="text" id="middletName" name="middletName" placeholder="Middle Name"
+                    <input type="text" id="middleName" name="middleName" value="<%- middleName!=undefined?middleName:''%>" placeholder="Middle Name"
                            class="form-control">
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="controls">
-                    <input type="text" id="lastName" name="lastName" placeholder="Last Name" class="form-control">
+                    <input type="text" id="lastName" name="lastName" placeholder="Last Name" value="<%- lastName!==undefined?lastName:''%>" class="form-control">
                 </div>
             </div>
         </div>

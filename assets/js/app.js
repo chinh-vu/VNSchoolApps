@@ -81,17 +81,63 @@ define(["marionette", "jquery-ui"],
                     return API.getHeaders();
                 });
             });
-        });
 
+            require(["entities/account/family", "entities/account/family_collection"],
+                function (Family, Families) {
+                var API = {
+                    getFamily: function (familyId) {
+                        var family = new Family({id: familyId});
+
+                        var defer = $.Deferred();
+                        setTimeout(function () {
+                            family.fetch({
+                                success: function (data) {
+                                    console.log("hoorah");
+                                    defer.resolve(data);
+                                }
+                            });
+                        }, 2000);
+                        return defer.promise();
+                    },
+
+                    getFamilies: function () {
+                        var families = new Families();
+
+                        var defer = $.Deferred();
+                        setTimeout(function () {
+                            families.fetch({
+                                success: function (data) {
+                                    console.log("hoorah");
+                                    defer.resolve(data);
+                                }
+                            });
+                        }, 2000);
+                        return defer.promise();
+                    }
+                };
+
+                App.reqres.setHandler("family:entities", function () {
+                    console.log("family:entities get invoked!!!");
+
+                    return API.getFamilies();
+                });
+
+
+                App.reqres.setHandler("family:entity", function (id) {
+
+                    console.log("family:entity get invoked!!! ", id);
+
+                    return API.getFamily(id);
+                });
+            });
+        });
 
 
         App.on("start", function () {
 
-
             if (Backbone.history) {
                 require(["apps/about/about_app"], function () {
                     Backbone.history.start();
-
                     if (App.getCurrentRoute() === "") {
                         App.trigger("accounts:list");
                     }

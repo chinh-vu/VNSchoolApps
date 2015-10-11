@@ -5,13 +5,18 @@ define(["marionette", "tpl!apps/account/list/templates/list_item.tpl"],
             template: itemTpl,
 
             triggers: {
-                "click td a.js-show": "account:show",
+                //"click td a.js-show": "account:show",
                 "click td a.js-edit": "account:edit",
                 "click button.js-delete": "account:delete"
             },
 
             events: {
-                "click": "highlightName"
+                "click": "highlightName",
+                "click td a.js-show": "showAccount",
+            },
+
+            initialize:function() {
+                console.log("account item view get invoked ", JSON.stringify(this.model));
             },
 
             flash: function (cssClass) {
@@ -32,6 +37,14 @@ define(["marionette", "tpl!apps/account/list/templates/list_item.tpl"],
                 this.$el.fadeOut(function () {
                     Marionette.ItemView.prototype.remove.call(self);
                 });
+            },
+
+            showAccount:function() {
+                console.log('showAccount ', this.id);
+            },
+            onRender: function () {
+                console.log("On render get call ", JSON.stringify(this.model));
             }
+
         });
     });
